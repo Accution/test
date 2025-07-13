@@ -51,23 +51,7 @@
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-                    
-                    <div>
-                        <label for="status" class="block text-sm font-medium text-gray-700 mb-2">
-                            <i class="fas fa-toggle-on mr-1 text-green-500"></i>
-                            Status
-                        </label>
-                        <select id="status" 
-                                name="status" 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white">
-                            <option value="pending" {{ old('status', $booking->status) === 'pending' ? 'selected' : '' }}>Pending</option>
-                            <option value="confirmed" {{ old('status', $booking->status) === 'confirmed' ? 'selected' : '' }}>Confirmed</option>
-                            <option value="cancelled" {{ old('status', $booking->status) === 'cancelled' ? 'selected' : '' }}>Cancelled</option>
-                        </select>
-                        @error('status')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <!-- Removed status dropdown for users -->
                 </div>
                 
                 <div class="mt-6">

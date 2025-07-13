@@ -20,7 +20,24 @@
     </div>
 
     <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="flex items-center">
+                <div class="p-3 rounded-full bg-gradient-to-r from-blue-500 to-blue-600">
+                    <i class="fas fa-users text-white text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-600">Total Users</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $userCount ?? 0 }}</p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="flex items-center text-sm text-blue-600">
+                    <i class="fas fa-user-friends mr-1"></i>
+                    <span>All registered users</span>
+                </div>
+            </div>
+        </div>
         <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div class="flex items-center">
                 <div class="p-3 rounded-full bg-gradient-to-r from-slate-500 to-gray-600">
@@ -158,8 +175,12 @@
                 @foreach($recentBookings ?? [] as $booking)
                     <div class="py-2 flex items-center justify-between">
                         <div>
-                            <p class="text-gray-700 font-semibold">{{ $booking->service ?? 'N/A' }}</p>
-                            <p class="text-gray-500 text-sm">{{ $booking->date ?? 'N/A' }} at {{ $booking->time ?? 'N/A' }}</p>
+                            <p class="text-gray-700 font-semibold">{{ $booking->title ?? 'N/A' }}</p>
+                            <p class="text-gray-500 text-sm">
+                                {{ $booking->check_in_date ? $booking->check_in_date->format('M d, Y') : 'N/A' }}
+                                at
+                                {{ $booking->check_in_time ?? 'N/A' }}
+                            </p>
                         </div>
                         <span class="px-2 py-1 rounded text-xs font-bold {{ $booking->status === 'confirmed' ? 'bg-green-100 text-green-800' : ($booking->status === 'pending' ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800') }}">
                             {{ ucfirst($booking->status ?? 'unknown') }}

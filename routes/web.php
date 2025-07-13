@@ -67,13 +67,14 @@ Route::middleware('auth')->group(function () {
         $confirmedBookings = $user->bookings()->where('status', 'confirmed')->count();
         $cancelledBookings = $user->bookings()->where('status', 'cancelled')->count();
         $recentBookings = $user->bookings()->latest()->take(5)->get();
-        
+        $userCount = \App\Models\User::where('is_admin', false)->count();
         return view('dashboard', compact(
             'totalBookings',
             'pendingBookings', 
             'confirmedBookings',
             'cancelledBookings',
-            'recentBookings'
+            'recentBookings',
+            'userCount'
         ));
     })->name('dashboard');
 
@@ -130,4 +131,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::patch('/bookings/{booking}/cancel', [AdminController::class, 'cancelBooking'])->name('bookings.cancel');
     Route::put('/bookings/{booking}/status', [AdminController::class, 'updateBookingStatus'])->name('bookings.update-status');
     Route::delete('/bookings/{booking}', [AdminController::class, 'deleteBooking'])->name('bookings.delete');
+    Route::get('/bookings/{booking}/edit', [AdminController::class, 'editBooking'])->name('bookings.edit');
+    Route::put('/bookings/{booking}', [AdminController::class, 'updateBooking'])->name('bookings.update');
 });

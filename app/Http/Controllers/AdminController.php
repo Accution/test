@@ -130,6 +130,43 @@ class AdminController extends Controller
     }
 
     /**
+     * Show the form for editing a booking (admin).
+     */
+    public function editBooking(Booking $booking)
+    {
+        $booking->load('user');
+        return view('admin.edit-booking', compact('booking'));
+    }
+
+    /**
+     * Update the specified booking (admin).
+     */
+    public function updateBooking(Request $request, Booking $booking)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'check_in_date' => 'required|date',
+            'check_in_time' => 'required',
+            'check_out_date' => 'required|date',
+            'check_out_time' => 'required',
+            'status' => 'required|in:pending,confirmed,cancelled',
+        ]);
+
+        $booking->update($request->only([
+            'title',
+            'description',
+            'check_in_date',
+            'check_in_time',
+            'check_out_date',
+            'check_out_time',
+            'status',
+        ]));
+
+        return redirect()->route('admin.bookings.show', $booking)->with('success', 'Booking updated successfully!');
+    }
+
+    /**
      * Confirm a booking.
      */
     public function confirmBooking(Booking $booking)
