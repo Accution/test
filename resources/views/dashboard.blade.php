@@ -156,52 +156,19 @@
         @if(isset($recentBookings) && count($recentBookings) > 0)
             <div class="divide-y divide-gray-200">
                 @foreach($recentBookings ?? [] as $booking)
-                    <div class="p-6 hover:bg-gray-50 transition-colors duration-200">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-full flex items-center justify-center
-                                    @if($booking->status === 'confirmed') bg-emerald-100
-                                    @elseif($booking->status === 'pending') bg-amber-100
-                                    @else bg-rose-100 @endif">
-                                    <i class="fas 
-                                        @if($booking->status === 'confirmed') fa-check text-emerald-600
-                                        @elseif($booking->status === 'pending') fa-clock text-amber-600
-                                        @else fa-times text-rose-600 @endif"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-medium text-gray-900">{{ $booking->title }}</h3>
-                                    <p class="text-sm text-gray-500">{{ $booking->check_in_date->format('M d, Y') }} - {{ $booking->check_out_date->format('M d, Y') }}</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
-                                    @if($booking->status === 'confirmed') bg-emerald-100 text-emerald-800
-                                    @elseif($booking->status === 'pending') bg-amber-100 text-amber-800
-                                    @else bg-rose-100 text-rose-800 @endif">
-                                    {{ ucfirst($booking->status) }}
-                                </span>
-                                <a href="{{ route('bookings.show', $booking) }}" 
-                                   class="text-slate-600 hover:text-slate-800 transition-colors duration-200">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                            </div>
+                    <div class="py-2 flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-700 font-semibold">{{ $booking->service ?? 'N/A' }}</p>
+                            <p class="text-gray-500 text-sm">{{ $booking->date ?? 'N/A' }} at {{ $booking->time ?? 'N/A' }}</p>
                         </div>
+                        <span class="px-2 py-1 rounded text-xs font-bold {{ $booking->status === 'confirmed' ? 'bg-green-100 text-green-800' : ($booking->status === 'pending' ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800') }}">
+                            {{ ucfirst($booking->status ?? 'unknown') }}
+                        </span>
                     </div>
                 @endforeach
             </div>
         @else
-            <div class="p-12 text-center">
-                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-calendar-plus text-gray-400 text-2xl"></i>
-                </div>
-                <h3 class="text-lg font-medium text-gray-900 mb-2">No bookings yet</h3>
-                <p class="text-gray-500 mb-6">Start by creating your first booking</p>
-                <a href="{{ route('bookings.create') }}" 
-                   class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-slate-600 to-gray-700 text-white text-sm font-medium rounded-lg hover:from-slate-700 hover:to-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 transition-all duration-200">
-                    <i class="fas fa-plus mr-2"></i>
-                    Create First Booking
-                </a>
-            </div>
+            <p class="text-gray-500">No recent bookings.</p>
         @endif
     </div>
 
