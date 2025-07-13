@@ -28,7 +28,7 @@
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Total Bookings</p>
-                    <p class="text-2xl font-bold text-gray-900">{{ $totalBookings }}</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $totalBookings ?? 0 }}</p>
                 </div>
             </div>
             <div class="mt-4">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Pending</p>
-                    <p class="text-2xl font-bold text-gray-900">{{ $pendingBookings }}</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $pendingBookings ?? 0 }}</p>
                 </div>
             </div>
             <div class="mt-4">
@@ -64,7 +64,7 @@
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Confirmed</p>
-                    <p class="text-2xl font-bold text-gray-900">{{ $confirmedBookings }}</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $confirmedBookings ?? 0 }}</p>
                 </div>
             </div>
             <div class="mt-4">
@@ -82,7 +82,7 @@
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Cancelled</p>
-                    <p class="text-2xl font-bold text-gray-900">{{ $cancelledBookings }}</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $cancelledBookings ?? 0 }}</p>
                 </div>
             </div>
             <div class="mt-4">
@@ -153,9 +153,9 @@
             </div>
         </div>
         
-        @if($recentBookings->count() > 0)
+        @if($recentBookings ?? []|count() > 0)
             <div class="divide-y divide-gray-200">
-                @foreach($recentBookings as $booking)
+                @foreach($recentBookings ?? [] as $booking)
                     <div class="p-6 hover:bg-gray-50 transition-colors duration-200">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
