@@ -3,12 +3,21 @@
 @section('title', 'Dashboard')
 
 @section('content')
+@php
+    $isFirstLogin = session('first_login', false);
+@endphp
 <div class="max-w-7xl mx-auto space-y-8">
     <!-- Header -->
     <div class="bg-gradient-to-r from-slate-700 to-gray-800 rounded-2xl p-8 text-white">
         <div class="flex items-center justify-between">
             <div>
-                <h1 class="text-3xl font-bold mb-2">Welcome back, {{ auth()->user()->name ?? 'User' }}!</h1>
+                <h1 class="text-3xl font-bold mb-2">
+                    @if($isFirstLogin)
+                        Welcome, {{ auth()->user()->name ?? 'User' }}!
+                    @else
+                        Welcome back, {{ auth()->user()->name ?? 'User' }}!
+                    @endif
+                </h1>
                 <p class="text-gray-200 text-lg">Here's what's happening with your bookings</p>
             </div>
             <div class="hidden md:block">

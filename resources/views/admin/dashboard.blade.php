@@ -3,12 +3,21 @@
 @section('title', 'Admin Dashboard')
 
 @section('content')
+@php
+    $isFirstLogin = session('first_login', false);
+@endphp
 <div class="max-w-7xl mx-auto space-y-8">
     <!-- Header -->
     <div class="bg-gradient-to-r from-slate-700 to-gray-800 rounded-2xl p-8 text-white">
         <div class="flex items-center justify-between">
             <div>
-                <h1 class="text-3xl font-bold mb-2">Admin Dashboard</h1>
+                <h1 class="text-3xl font-bold mb-2">
+                    @if($isFirstLogin)
+                        Welcome, {{ auth()->user()->name ?? 'Admin' }}!
+                    @else
+                        Welcome back, {{ auth()->user()->name ?? 'Admin' }}!
+                    @endif
+                </h1>
                 <p class="text-gray-200 text-lg">System overview and management</p>
             </div>
             <div class="hidden md:block">

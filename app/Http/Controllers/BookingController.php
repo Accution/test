@@ -19,6 +19,10 @@ class BookingController extends Controller
      */
     public function index()
     {
+        if (!session()->has('first_login_checked')) {
+            $isFirstLogin = (auth()->user()->created_at->eq(auth()->user()->updated_at));
+            session(['first_login' => $isFirstLogin, 'first_login_checked' => true]);
+        }
         $bookings = Auth::user()->bookings()->latest()->get();
         return view('bookings.index', compact('bookings'));
     }

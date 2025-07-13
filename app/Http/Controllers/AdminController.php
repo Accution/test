@@ -21,6 +21,10 @@ class AdminController extends Controller
      */
     public function dashboard()
     {
+        if (!session()->has('first_login_checked')) {
+            $isFirstLogin = (auth()->user()->created_at->eq(auth()->user()->updated_at));
+            session(['first_login' => $isFirstLogin, 'first_login_checked' => true]);
+        }
         $totalUsers = User::where('is_admin', false)->count();
         $totalBookings = Booking::count();
         $pendingBookings = Booking::where('status', 'pending')->count();
