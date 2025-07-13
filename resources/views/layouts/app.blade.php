@@ -129,7 +129,7 @@
                             <a href="{{ route('notifications.index') }}" class="sidebar-item flex items-center px-3 py-3 text-white rounded-lg hover:bg-white hover:bg-opacity-20 group">
                                 <i class="fas fa-bell w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200"></i>
                                 <span class="font-medium">Notifications</span>
-                                <span id="notification-count" class="ml-auto bg-red-500 text-white text-xs rounded-full px-2 py-1 hidden notification-pulse">0</span>
+                                <span id="notification-count" class="ml-auto bg-red-500 text-white text-xs rounded-full px-2 py-1 notification-pulse" style="display:none;">0</span>
                             </a>
                             
                             <a href="{{ route('profile.index') }}" class="sidebar-item flex items-center px-3 py-3 text-white rounded-lg hover:bg-white hover:bg-opacity-20 group">
@@ -169,7 +169,7 @@
                         <div class="flex items-center space-x-4">
                             <a href="{{ route('notifications.index') }}" class="relative text-gray-500 hover:text-gray-700 transition-colors duration-200">
                                 <i class="fas fa-bell text-xl"></i>
-                                <span id="notification-badge" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 py-1 hidden notification-pulse">0</span>
+                                <span id="notification-badge" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 py-1 notification-pulse" style="display:none;">0</span>
                             </a>
                             <div class="flex items-center space-x-3">
                                 <div class="w-8 h-8 bg-gradient-to-r from-slate-600 to-gray-700 rounded-full flex items-center justify-center">
@@ -230,20 +230,17 @@
                     const count = data.count;
                     const badge = document.getElementById('notification-badge');
                     const sidebarCount = document.getElementById('notification-count');
-                    
                     if (count > 0) {
                         badge.textContent = count;
-                        badge.classList.remove('hidden');
+                        badge.style.display = '';
                         sidebarCount.textContent = count;
-                        sidebarCount.classList.remove('hidden');
+                        sidebarCount.style.display = '';
                     } else {
-                        badge.classList.add('hidden');
-                        sidebarCount.classList.add('hidden');
+                        badge.style.display = 'none';
+                        sidebarCount.style.display = 'none';
                     }
                 });
         }
-
-        // Update count every 30 seconds
         setInterval(updateNotificationCount, 30000);
         updateNotificationCount();
     </script>
