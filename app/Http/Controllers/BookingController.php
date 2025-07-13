@@ -56,11 +56,12 @@ class BookingController extends Controller
         ]);
 
         // Create notification for user
+        $userNotificationCount = Auth::user()->notifications()->count() + 1;
         Auth::user()->notifications()->create([
             'data' => [
                 'booking_id' => $booking->id,
                 'title' => 'Booking Created',
-                'message' => "Your booking '{$booking->title}' has been created successfully.",
+                'message' => "[Notification #$userNotificationCount] Your booking '{$booking->title}' has been created successfully.",
                 'type' => 'booking_created',
             ],
         ]);
@@ -68,11 +69,12 @@ class BookingController extends Controller
         // Create notification for admin
         $admin = \App\Models\User::where('is_admin', true)->first();
         if ($admin) {
+            $adminNotificationCount = $admin->notifications()->count() + 1;
             $admin->notifications()->create([
                 'data' => [
                     'booking_id' => $booking->id,
                     'title' => 'New Booking',
-                    'message' => "User {$booking->user->name} has created a new booking: {$booking->title}",
+                    'message' => "[Notification #$adminNotificationCount] User {$booking->user->name} has created a new booking: {$booking->title}",
                     'type' => 'admin_notification',
                 ],
             ]);
@@ -125,14 +127,29 @@ class BookingController extends Controller
         ]);
 
         // Create notification for booking update
+        $userNotificationCount = Auth::user()->notifications()->count() + 1;
         Auth::user()->notifications()->create([
             'data' => [
                 'booking_id' => $booking->id,
                 'title' => 'Booking Updated',
-                'message' => "Your booking '{$booking->title}' has been updated successfully.",
+                'message' => "[Notification #$userNotificationCount] Your booking '{$booking->title}' has been updated successfully.",
                 'type' => 'booking_updated',
             ],
         ]);
+
+        // Create notification for admin
+        $admin = \App\Models\User::where('is_admin', true)->first();
+        if ($admin) {
+            $adminNotificationCount = $admin->notifications()->count() + 1;
+            $admin->notifications()->create([
+                'data' => [
+                    'booking_id' => $booking->id,
+                    'title' => 'Booking Updated',
+                    'message' => "[Notification #$adminNotificationCount] User {$booking->user->name} updated booking: {$booking->title}",
+                    'type' => 'admin_notification',
+                ],
+            ]);
+        }
 
         return redirect()->route('bookings.index')->with('success', 'Booking updated successfully!');
     }
@@ -147,13 +164,27 @@ class BookingController extends Controller
         $booking->delete();
 
         // Create notification for booking cancellation
+        $userNotificationCount = Auth::user()->notifications()->count() + 1;
         Auth::user()->notifications()->create([
             'data' => [
                 'title' => 'Booking Cancelled',
-                'message' => "Your booking '{$bookingTitle}' has been cancelled.",
+                'message' => "[Notification #$userNotificationCount] Your booking '{$bookingTitle}' has been cancelled.",
                 'type' => 'booking_cancelled',
             ],
         ]);
+
+        // Create notification for admin
+        $admin = \App\Models\User::where('is_admin', true)->first();
+        if ($admin) {
+            $adminNotificationCount = $admin->notifications()->count() + 1;
+            $admin->notifications()->create([
+                'data' => [
+                    'title' => 'Booking Cancelled',
+                    'message' => "[Notification #$adminNotificationCount] User " . Auth::user()->name . " cancelled booking: {$bookingTitle}",
+                    'type' => 'admin_notification',
+                ],
+            ]);
+        }
 
         return redirect()->route('bookings.index')->with('success', 'Booking cancelled successfully!');
     }
