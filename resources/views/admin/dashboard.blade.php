@@ -1,0 +1,295 @@
+@extends('layouts.app')
+
+@section('title', 'Admin Dashboard')
+
+@section('content')
+<div class="max-w-7xl mx-auto space-y-8">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-slate-700 to-gray-800 rounded-2xl p-8 text-white">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-bold mb-2">Admin Dashboard</h1>
+                <p class="text-gray-200 text-lg">System overview and management</p>
+            </div>
+            <div class="hidden md:block">
+                <div class="p-4 bg-white bg-opacity-20 rounded-full">
+                    <i class="fas fa-shield-alt text-3xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="flex items-center">
+                <div class="p-3 rounded-full bg-gradient-to-r from-slate-500 to-gray-600">
+                    <i class="fas fa-users text-white text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-600">Total Users</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $totalUsers }}</p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="flex items-center text-sm text-slate-600">
+                    <i class="fas fa-user-plus mr-1"></i>
+                    <span>Registered users</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="flex items-center">
+                <div class="p-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-600">
+                    <i class="fas fa-calendar text-white text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-600">Total Bookings</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $totalBookings }}</p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="flex items-center text-sm text-amber-600">
+                    <i class="fas fa-chart-line mr-1"></i>
+                    <span>All bookings</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="flex items-center">
+                <div class="p-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-600">
+                    <i class="fas fa-clock text-white text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-600">Pending</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $pendingBookings }}</p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="flex items-center text-sm text-amber-600">
+                    <i class="fas fa-exclamation-triangle mr-1"></i>
+                    <span>Need attention</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="flex items-center">
+                <div class="p-3 rounded-full bg-gradient-to-r from-emerald-500 to-green-600">
+                    <i class="fas fa-check text-white text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-600">Confirmed</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $confirmedBookings }}</p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="flex items-center text-sm text-emerald-600">
+                    <i class="fas fa-check-circle mr-1"></i>
+                    <span>Successfully booked</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-r from-slate-500 to-gray-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-users text-white text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Manage Users</h3>
+                <p class="text-gray-600 mb-4">View and manage all system users</p>
+                <a href="{{ route('admin.users') }}" 
+                   class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-slate-600 to-gray-700 text-white text-sm font-medium rounded-lg hover:from-slate-700 hover:to-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 transition-all duration-200">
+                    <i class="fas fa-users-cog mr-2"></i>
+                    Manage Users
+                </a>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-calendar-check text-white text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">All Bookings</h3>
+                <p class="text-gray-600 mb-4">Review and manage all bookings</p>
+                <a href="{{ route('admin.bookings') }}" 
+                   class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white text-sm font-medium rounded-lg hover:from-amber-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all duration-200">
+                    <i class="fas fa-list mr-2"></i>
+                    View Bookings
+                </a>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-chart-bar text-white text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Analytics</h3>
+                <p class="text-gray-600 mb-4">View system performance metrics</p>
+                <a href="#" 
+                   class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white text-sm font-medium rounded-lg hover:from-emerald-600 hover:to-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-200">
+                    <i class="fas fa-chart-line mr-2"></i>
+                    View Analytics
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Trends Chart -->
+    <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-xl font-semibold text-gray-900">Booking Trends (Last 30 Days)</h2>
+            <div class="flex items-center space-x-2">
+                <div class="w-3 h-3 bg-slate-500 rounded-full"></div>
+                <span class="text-sm text-gray-600">Daily Bookings</span>
+            </div>
+        </div>
+        <div class="h-64">
+            <canvas id="bookingChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Recent Bookings -->
+    <div class="bg-white rounded-xl shadow-lg border border-gray-100">
+        <div class="p-6 border-b border-gray-200">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xl font-semibold text-gray-900">Recent Bookings</h2>
+                <a href="{{ route('admin.bookings') }}" class="text-slate-600 hover:text-slate-800 text-sm font-medium">
+                    View all <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+        
+        @if($recentBookings->count() > 0)
+            <div class="divide-y divide-gray-200">
+                @foreach($recentBookings as $booking)
+                    <div class="p-6 hover:bg-gray-50 transition-colors duration-200">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center
+                                    @if($booking->status === 'confirmed') bg-emerald-100
+                                    @elseif($booking->status === 'pending') bg-amber-100
+                                    @else bg-rose-100 @endif">
+                                    <i class="fas 
+                                        @if($booking->status === 'confirmed') fa-check text-emerald-600
+                                        @elseif($booking->status === 'pending') fa-clock text-amber-600
+                                        @else fa-times text-rose-600 @endif"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-medium text-gray-900">{{ $booking->title }}</h3>
+                                    <p class="text-sm text-gray-500">by {{ $booking->user->name }} • {{ $booking->check_in_date->format('M d, Y') }}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
+                                    @if($booking->status === 'confirmed') bg-emerald-100 text-emerald-800
+                                    @elseif($booking->status === 'pending') bg-amber-100 text-amber-800
+                                    @else bg-rose-100 text-rose-800 @endif">
+                                    {{ ucfirst($booking->status) }}
+                                </span>
+                                <a href="{{ route('admin.bookings.show', $booking) }}" 
+                                   class="text-slate-600 hover:text-slate-800 transition-colors duration-200">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <div class="p-12 text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-calendar-times text-gray-400 text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900 mb-2">No bookings yet</h3>
+                <p class="text-gray-500">No bookings have been created in the system.</p>
+            </div>
+        @endif
+    </div>
+
+    <!-- System Status -->
+    <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">System Status</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                <span class="text-sm text-gray-600">Booking System</span>
+                <span class="text-sm font-medium text-emerald-600">Operational</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                <span class="text-sm text-gray-600">User Management</span>
+                <span class="text-sm font-medium text-emerald-600">Active</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                <span class="text-sm text-gray-600">Notifications</span>
+                <span class="text-sm font-medium text-emerald-600">Connected</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                <span class="text-sm text-gray-600">Database</span>
+                <span class="text-sm font-medium text-emerald-600">Healthy</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Booking trends chart
+    const ctx = document.getElementById('bookingChart').getContext('2d');
+    const bookingChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {!! json_encode($dates->keys()) !!},
+            datasets: [{
+                label: 'Bookings',
+                data: {!! json_encode($dates->values()) !!},
+                borderColor: '#475569',
+                backgroundColor: 'rgba(71, 85, 105, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#475569',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2,
+                pointRadius: 4,
+                pointHoverRadius: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    },
+                    ticks: {
+                        stepSize: 1
+                    }
+                },
+                x: {
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                }
+            }
+        }
+    });
+</script>
+@endsection 
