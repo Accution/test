@@ -79,9 +79,8 @@
                                 <label for="check_in_date" class="block text-sm font-medium text-blue-900 mb-2">
                                     <i class="fas fa-calendar text-blue-500 mr-1"></i>Check-in Date
                                 </label>
-                                <input type="text" id="check_in_date" name="check_in_date" required 
-                                       class="w-full px-4 py-3 border-2 border-blue-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-blue-50 transition-all duration-200"
-                                       value="{{ old('check_in_date') }}">
+                                <div id="check_in_date_picker"></div>
+                                <input type="hidden" id="check_in_date" name="check_in_date" required value="{{ old('check_in_date') }}">
                                 @error('check_in_date')
                                     <p class="text-sm text-red-600 flex items-center mt-1">
                                         <i class="fas fa-exclamation-circle mr-1"></i>{{ $message }}
@@ -185,9 +184,8 @@
                                 <label for="check_out_date" class="block text-sm font-medium text-blue-900 mb-2">
                                     <i class="fas fa-calendar text-blue-500 mr-1"></i>Check-out Date
                                 </label>
-                                <input type="text" id="check_out_date" name="check_out_date" required 
-                                       class="w-full px-4 py-3 border-2 border-red-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-red-50 transition-all duration-200"
-                                       value="{{ old('check_out_date') }}">
+                                <div id="check_out_date_picker"></div>
+                                <input type="hidden" id="check_out_date" name="check_out_date" required value="{{ old('check_out_date') }}">
                                 @error('check_out_date')
                                     <p class="text-sm text-red-600 flex items-center mt-1">
                                         <i class="fas fa-exclamation-circle mr-1"></i>{{ $message }}
@@ -367,31 +365,23 @@
         // Initialize summary
         updateSummary();
 
-        // Initialize Flatpickr for date pickers
-        flatpickr("#check_in_date", {
+        // Initialize Flatpickr for always-visible inline calendars
+        flatpickr("#check_in_date_picker", {
+            inline: true,
             dateFormat: "Y-m-d",
+            defaultDate: document.getElementById('check_in_date').value || undefined,
             onChange: function(selectedDates, dateStr, instance) {
-                setTimeout(() => {
-                    document.querySelectorAll('.flatpickr-day').forEach(day => {
-                        day.classList.remove('check-in');
-                        if(day.dateObj && day.dateObj.toISOString().slice(0,10) === dateStr) {
-                            day.classList.add('check-in');
-                        }
-                    });
-                }, 10);
+                document.getElementById('check_in_date').value = dateStr;
+                updateSummary();
             }
         });
-        flatpickr("#check_out_date", {
+        flatpickr("#check_out_date_picker", {
+            inline: true,
             dateFormat: "Y-m-d",
+            defaultDate: document.getElementById('check_out_date').value || undefined,
             onChange: function(selectedDates, dateStr, instance) {
-                setTimeout(() => {
-                    document.querySelectorAll('.flatpickr-day').forEach(day => {
-                        day.classList.remove('check-out');
-                        if(day.dateObj && day.dateObj.toISOString().slice(0,10) === dateStr) {
-                            day.classList.add('check-out');
-                        }
-                    });
-                }, 10);
+                document.getElementById('check_out_date').value = dateStr;
+                updateSummary();
             }
         });
     });
