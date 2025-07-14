@@ -5,11 +5,11 @@
 @section('content')
 <div class="max-w-4xl mx-auto space-y-8">
     <!-- Header -->
-    <div class="bg-gradient-to-r from-orange-600 to-orange-700 rounded-2xl p-8 text-white">
+    <div class="bg-gradient-to-r from-blue-900 to-blue-700 rounded-2xl p-8 text-white">
         <div class="flex items-center justify-between">
             <div>
                 <h1 class="text-3xl font-bold mb-2">Edit Booking</h1>
-                <p class="text-orange-100 text-lg">Update your reservation details</p>
+                <p class="text-blue-100 text-lg">Update your corporate reservation details</p>
             </div>
             <div class="hidden md:block">
                 <div class="p-4 bg-white bg-opacity-20 rounded-full">
@@ -20,14 +20,14 @@
     </div>
 
     <!-- Form Card -->
-    <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+    <div class="bg-white rounded-xl shadow-lg border border-blue-100 overflow-hidden">
         <form method="POST" action="{{ route('bookings.update', $booking) }}" class="p-8">
             @csrf
             @method('PUT')
             
             <!-- Basic Information Section -->
             <div class="mb-8">
-                <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+                <h3 class="text-xl font-semibold text-blue-900 mb-6 flex items-center">
                     <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
                         <i class="fas fa-info-circle text-blue-600"></i>
                     </div>
@@ -36,7 +36,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label for="title" class="block text-sm font-medium text-gray-700 mb-2">
+                        <label for="title" class="block text-sm font-medium text-blue-900 mb-2">
                             <i class="fas fa-heading mr-1 text-blue-500"></i>
                             Booking Title *
                         </label>
@@ -55,8 +55,8 @@
                 </div>
                 
                 <div class="mt-6">
-                    <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
-                        <i class="fas fa-align-left mr-1 text-purple-500"></i>
+                    <label for="description" class="block text-sm font-medium text-blue-900 mb-2">
+                        <i class="fas fa-align-left mr-1 text-blue-500"></i>
                         Description
                     </label>
                     <textarea id="description" 
@@ -72,9 +72,9 @@
 
             <!-- Date & Time Section -->
             <div class="mb-8">
-                <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                    <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
-                        <i class="fas fa-calendar-alt text-purple-600"></i>
+                <h3 class="text-xl font-semibold text-blue-900 mb-6 flex items-center">
+                    <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-calendar-alt text-blue-600"></i>
                     </div>
                     Date & Time Details
                 </h3>
@@ -89,8 +89,8 @@
                         
                         <div class="space-y-4">
                             <div>
-                                <label for="check_in_date" class="block text-sm font-medium text-blue-800 mb-2">
-                                    <i class="fas fa-calendar mr-1"></i>
+                                <label for="check_in_date" class="block text-sm font-medium text-blue-900 mb-2">
+                                    <i class="fas fa-calendar mr-1 text-blue-500"></i>
                                     Check-in Date *
                                 </label>
                                 <input type="date" 
@@ -105,8 +105,8 @@
                             </div>
                             
                             <div>
-                                <label for="check_in_time" class="block text-sm font-medium text-blue-800 mb-2">
-                                    <i class="fas fa-clock mr-1"></i>
+                                <label for="check_in_time" class="block text-sm font-medium text-blue-900 mb-2">
+                                    <i class="fas fa-clock mr-1 text-blue-500"></i>
                                     Check-in Time *
                                 </label>
                                 <input type="time" 
@@ -123,16 +123,16 @@
                     </div>
                     
                     <!-- Check-out Details -->
-                    <div class="bg-gradient-to-r from-red-50 to-red-100 rounded-xl p-6 border border-red-200">
-                        <h4 class="text-lg font-semibold text-red-900 mb-4 flex items-center">
+                    <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200">
+                        <h4 class="text-lg font-semibold text-blue-900 mb-4 flex items-center">
                             <i class="fas fa-sign-out-alt mr-2"></i>
                             Check-out Details
                         </h4>
                         
                         <div class="space-y-4">
                             <div>
-                                <label for="check_out_date" class="block text-sm font-medium text-red-800 mb-2">
-                                    <i class="fas fa-calendar mr-1"></i>
+                                <label for="check_out_date" class="block text-sm font-medium text-blue-900 mb-2">
+                                    <i class="fas fa-calendar mr-1 text-blue-500"></i>
                                     Check-out Date *
                                 </label>
                                 <input type="date" 
@@ -140,15 +140,15 @@
                                        name="check_out_date" 
                                        value="{{ old('check_out_date', $booking->check_out_date->format('Y-m-d')) }}" 
                                        required
-                                       class="w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200 bg-white hover:bg-red-50">
+                                       class="w-full px-4 py-3 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white hover:bg-blue-50">
                                 @error('check_out_date')
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
                             
                             <div>
-                                <label for="check_out_time" class="block text-sm font-medium text-red-800 mb-2">
-                                    <i class="fas fa-clock mr-1"></i>
+                                <label for="check_out_time" class="block text-sm font-medium text-blue-900 mb-2">
+                                    <i class="fas fa-clock mr-1 text-blue-500"></i>
                                     Check-out Time *
                                 </label>
                                 <input type="time" 
@@ -156,7 +156,7 @@
                                        name="check_out_time" 
                                        value="{{ old('check_out_time', $booking->check_out_time) }}" 
                                        required
-                                       class="w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200 bg-white hover:bg-red-50">
+                                       class="w-full px-4 py-3 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white hover:bg-blue-50">
                                 @error('check_out_time')
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror

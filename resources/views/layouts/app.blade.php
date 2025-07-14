@@ -11,33 +11,33 @@
     <style>
         [x-cloak] { display: none !important; }
         .sidebar-gradient {
-            background: #181F2A;
+            background: linear-gradient(180deg, #2563EB 0%, #1E40AF 100%);
             box-shadow: 2px 0 24px 0 rgba(24,31,42,0.12);
         }
         .sidebar-item {
             transition: all 0.3s cubic-bezier(.4,0,.2,1);
-            border-radius: 1rem;
+            border-radius: 0.75rem;
             margin-bottom: 0.25rem;
             font-size: 1rem;
             font-weight: 500;
             padding: 0.75rem 1.25rem;
         }
         .sidebar-item.active, .sidebar-item[aria-current="page"] {
-            background: linear-gradient(90deg, #6C63FF 0%, #48C6EF 100%);
+            background: #2563EB;
             color: #fff !important;
-            box-shadow: 0 2px 8px 0 rgba(76,110,245,0.10);
+            box-shadow: 0 2px 8px 0 rgba(37,99,235,0.10);
         }
         .sidebar-item:hover {
-            background: rgba(108,99,255,0.10);
-            color: #6C63FF !important;
+            background: rgba(37,99,235,0.10);
+            color: #2563EB !important;
             transform: translateX(6px) scale(1.03);
         }
         .sidebar-icon {
-            background: #232B3E;
+            background: #1E40AF;
             border-radius: 50%;
             padding: 0.5rem;
             margin-right: 1rem;
-            color: #6C63FF;
+            color: #fff;
             font-size: 1.25rem;
             display: flex;
             align-items: center;
@@ -66,14 +66,14 @@
              x-transition:leave-end="-translate-x-full">
             
             <!-- Sidebar Header -->
-            <div class="flex items-center justify-between h-20 px-6 bg-black bg-opacity-20">
+            <div class="flex items-center justify-between h-20 px-6 bg-blue-900 bg-opacity-80">
                 <div class="flex items-center">
                     <div class="p-2 bg-white bg-opacity-20 rounded-lg">
                         <i class="fas fa-calendar-alt text-white text-2xl"></i>
                     </div>
                     <div class="ml-3">
-                        <h1 class="text-xl font-bold text-white">Booking System</h1>
-                        <p class="text-gray-200 text-xs">Management Portal</p>
+                        <h1 class="text-xl font-bold text-white">Booking Portal</h1>
+                        <p class="text-gray-200 text-xs">Corporate Management</p>
                     </div>
                 </div>
                 <button @click="sidebarOpen = false" class="text-white hover:text-gray-200 transition-colors duration-200">
@@ -109,30 +109,30 @@
                     @if(auth()->user()->isAdmin())
                         <!-- Admin Navigation -->
                         <div class="mb-6">
-                            <h3 class="text-xs font-semibold text-gray-200 uppercase tracking-wider mb-3 px-3">Admin Panel</h3>
+                            <h3 class="text-xs font-semibold text-gray-200 uppercase tracking-wider mb-3 px-3">Administration</h3>
                             <div class="space-y-1">
                                 <a href="{{ route('admin.dashboard') }}" class="sidebar-item flex items-center px-3 py-3 text-white rounded-lg hover:bg-white hover:bg-opacity-20 group">
                                     <i class="fas fa-tachometer-alt w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200"></i>
-                                    <span class="font-medium">Dashboard</span>
+                                    <span class="font-medium">Overview</span>
                                 </a>
                                 <a href="{{ route('admin.users') }}" class="sidebar-item flex items-center px-3 py-3 text-white rounded-lg hover:bg-white hover:bg-opacity-20 group">
                                     <i class="fas fa-users w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200"></i>
-                                    <span class="font-medium">Manage Users</span>
+                                    <span class="font-medium">User Management</span>
                                 </a>
                                 <a href="{{ route('admin.bookings') }}" class="sidebar-item flex items-center px-3 py-3 text-white rounded-lg hover:bg-white hover:bg-opacity-20 group">
                                     <i class="fas fa-calendar-check w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200"></i>
-                                    <span class="font-medium">All Bookings</span>
+                                    <span class="font-medium">Bookings</span>
                                 </a>
                             </div>
                         </div>
                     @else
                         <!-- User Navigation -->
                         <div class="mb-6">
-                            <h3 class="text-xs font-semibold text-gray-200 uppercase tracking-wider mb-3 px-3">My Account</h3>
+                            <h3 class="text-xs font-semibold text-gray-200 uppercase tracking-wider mb-3 px-3">Account</h3>
                             <div class="space-y-1">
                                 <a href="{{ route('dashboard') }}" class="sidebar-item flex items-center px-3 py-3 text-white rounded-lg hover:bg-white hover:bg-opacity-20 group">
                                     <i class="fas fa-tachometer-alt w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200"></i>
-                                    <span class="font-medium">Dashboard</span>
+                                    <span class="font-medium">Overview</span>
                                 </a>
                                 <a href="{{ route('bookings.index') }}" class="sidebar-item flex items-center px-3 py-3 text-white rounded-lg hover:bg-white hover:bg-opacity-20 group">
                                     <i class="fas fa-calendar w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200"></i>
@@ -140,7 +140,7 @@
                                 </a>
                                 <a href="{{ route('bookings.create') }}" class="sidebar-item flex items-center px-3 py-3 text-white rounded-lg hover:bg-white hover:bg-opacity-20 group">
                                     <i class="fas fa-plus w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200"></i>
-                                    <span class="font-medium">Create Booking</span>
+                                    <span class="font-medium">New Booking</span>
                                 </a>
                             </div>
                         </div>
@@ -152,13 +152,13 @@
                         <div class="space-y-1">
                             <a href="{{ route('notifications.index') }}" class="sidebar-item flex items-center px-3 py-3 text-white rounded-lg hover:bg-white hover:bg-opacity-20 group">
                                 <i class="fas fa-bell w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200"></i>
-                                <span class="font-medium">Notifications</span>
+                                <span class="font-medium">Alerts</span>
                                 <span id="notification-count" class="ml-auto bg-red-500 text-white text-xs rounded-full px-2 py-1 notification-pulse" style="display:none;">0</span>
                             </a>
                             
                             <a href="{{ route('profile.index') }}" class="sidebar-item flex items-center px-3 py-3 text-white rounded-lg hover:bg-white hover:bg-opacity-20 group">
                                 <i class="fas fa-user w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200"></i>
-                                <span class="font-medium">My Profile</span>
+                                <span class="font-medium">Profile</span>
                             </a>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                             @csrf
                             <button type="submit" class="sidebar-item w-full flex items-center px-3 py-3 text-white rounded-lg hover:bg-red-500 hover:bg-opacity-20 group transition-all duration-200">
                                 <i class="fas fa-sign-out-alt w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200"></i>
-                                <span class="font-medium">Logout</span>
+                                <span class="font-medium">Sign Out</span>
                             </button>
                         </form>
                     </div>
@@ -180,13 +180,13 @@
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-hidden">
             <!-- Enhanced Top Navigation -->
-            <header class="bg-white shadow-lg border-b border-gray-200">
+            <header class="bg-white shadow-lg border-b border-blue-100">
                 <div class="flex items-center justify-between h-16 px-6">
                     <div class="flex items-center">
-                        <button @click="sidebarOpen = true" class="text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                        <button @click="sidebarOpen = true" class="text-blue-600 hover:text-blue-800 transition-colors duration-200">
                             <i class="fas fa-bars text-xl"></i>
                         </button>
-                        <h2 class="ml-4 text-xl font-semibold text-gray-800">@yield('title', 'Dashboard')</h2>
+                        <h2 class="ml-4 text-xl font-semibold text-blue-900">@yield('title', 'Overview')</h2>
                     </div>
                     
                     @auth

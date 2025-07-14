@@ -5,7 +5,17 @@
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-gray-800;
+  }
+  a {
+    @apply text-blue-600 hover:text-blue-800 transition;
+  }
+  button, .btn {
+    @apply bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700 transition;
+  }
 }

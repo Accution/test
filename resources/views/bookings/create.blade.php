@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Create Booking')
+@section('title', 'New Booking')
 
 @section('content')
 <div class="max-w-4xl mx-auto">
     <div class="bg-white rounded-xl shadow-lg overflow-hidden">
         <!-- Header -->
-        <div class="bg-gradient-to-r from-slate-600 to-gray-700 rounded-2xl p-8 text-white">
+        <div class="bg-gradient-to-r from-blue-900 to-blue-700 rounded-2xl p-8 text-white">
             <div class="flex items-center justify-between">
                 <div>
-                    <h1 class="text-3xl font-bold mb-2">Create New Booking</h1>
-                    <p class="text-gray-200 text-lg">Schedule your reservation</p>
+                    <h1 class="text-3xl font-bold mb-2">New Booking</h1>
+                    <p class="text-blue-100 text-lg">Schedule your corporate reservation</p>
                 </div>
                 <div class="hidden md:block">
                     <div class="p-4 bg-white bg-opacity-20 rounded-full">
@@ -25,14 +25,14 @@
             
             <!-- Basic Information -->
             <div class="space-y-6">
-                <h3 class="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">
-                    <i class="fas fa-info-circle text-slate-500 mr-2"></i>Basic Information
+                <h3 class="text-lg font-semibold text-blue-900 border-b border-blue-100 pb-2">
+                    <i class="fas fa-info-circle text-blue-500 mr-2"></i>Basic Information
                 </h3>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-2">
-                        <label for="title" class="block text-sm font-medium text-gray-700">
-                            <i class="fas fa-tag text-gray-400 mr-1"></i>Booking Title
+                        <label for="title" class="block text-sm font-medium text-blue-900">
+                            <i class="fas fa-tag text-blue-400 mr-1"></i>Booking Title
                         </label>
                         <input type="text" id="title" name="title" required 
                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-all duration-200"
@@ -46,8 +46,8 @@
                     </div>
 
                     <div class="space-y-2">
-                        <label for="description" class="block text-sm font-medium text-gray-700">
-                            <i class="fas fa-align-left text-gray-400 mr-1"></i>Description (Optional)
+                        <label for="description" class="block text-sm font-medium text-blue-900">
+                            <i class="fas fa-align-left text-blue-400 mr-1"></i>Description (Optional)
                         </label>
                         <textarea id="description" name="description" rows="3" 
                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-all duration-200"
@@ -63,21 +63,21 @@
 
             <!-- Date & Time Selection -->
             <div class="space-y-6">
-                <h3 class="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">
-                    <i class="fas fa-clock text-slate-500 mr-2"></i>Date & Time Selection
+                <h3 class="text-lg font-semibold text-blue-900 border-b border-blue-100 pb-2">
+                    <i class="fas fa-clock text-blue-500 mr-2"></i>Date & Time Selection
                 </h3>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Check-in -->
-                    <div class="bg-gradient-to-br from-slate-50 to-gray-50 p-6 rounded-xl border border-slate-100">
-                        <h4 class="text-lg font-medium text-slate-900 mb-4 flex items-center">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-100">
+                        <h4 class="text-lg font-medium text-blue-900 mb-4 flex items-center">
                             <i class="fas fa-sign-in-alt mr-2"></i>Check-in Details
                         </h4>
                         
                         <div class="space-y-4">
                             <div>
-                                <label for="check_in_date" class="block text-sm font-medium text-slate-700 mb-2">
-                                    <i class="fas fa-calendar text-slate-500 mr-1"></i>Check-in Date
+                                <label for="check_in_date" class="block text-sm font-medium text-blue-900 mb-2">
+                                    <i class="fas fa-calendar text-blue-500 mr-1"></i>Check-in Date
                                 </label>
                                 <input type="text" id="check_in_date" name="check_in_date" required 
                                        class="w-full px-4 py-3 border-2 border-blue-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-blue-50 transition-all duration-200"
@@ -90,8 +90,8 @@
                             </div>
                             
                             <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-2">
-                                    <i class="fas fa-clock text-slate-500 mr-1"></i>Check-in Time
+                                <label class="block text-sm font-medium text-blue-900 mb-2">
+                                    <i class="fas fa-clock text-blue-500 mr-1"></i>Check-in Time
                                 </label>
                                 <div class="relative">
                                     <input type="text" id="check_in_time_display" readonly
@@ -175,15 +175,15 @@
                     </div>
 
                     <!-- Check-out -->
-                    <div class="bg-gradient-to-br from-gray-50 to-slate-50 p-6 rounded-xl border border-gray-100">
-                        <h4 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-100">
+                        <h4 class="text-lg font-medium text-blue-900 mb-4 flex items-center">
                             <i class="fas fa-sign-out-alt mr-2"></i>Check-out Details
                         </h4>
                         
                         <div class="space-y-4">
                             <div>
-                                <label for="check_out_date" class="block text-sm font-medium text-gray-700 mb-2">
-                                    <i class="fas fa-calendar text-gray-500 mr-1"></i>Check-out Date
+                                <label for="check_out_date" class="block text-sm font-medium text-blue-900 mb-2">
+                                    <i class="fas fa-calendar text-blue-500 mr-1"></i>Check-out Date
                                 </label>
                                 <input type="text" id="check_out_date" name="check_out_date" required 
                                        class="w-full px-4 py-3 border-2 border-red-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-red-50 transition-all duration-200"
@@ -196,8 +196,8 @@
                             </div>
                             
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">
-                                    <i class="fas fa-clock text-gray-500 mr-1"></i>Check-out Time
+                                <label class="block text-sm font-medium text-blue-900 mb-2">
+                                    <i class="fas fa-clock text-blue-500 mr-1"></i>Check-out Time
                                 </label>
                                 <div class="relative">
                                     <input type="text" id="check_out_time_display" readonly
