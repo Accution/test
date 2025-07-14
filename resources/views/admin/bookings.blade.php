@@ -5,15 +5,15 @@
 @section('content')
 <div class="max-w-7xl mx-auto space-y-8">
     <!-- Header -->
-    <div class="bg-gradient-to-r from-slate-600 to-slate-700 rounded-2xl p-8 text-white">
+    <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
         <div class="flex items-center justify-between">
             <div>
-                <h1 class="text-3xl font-bold mb-2">All Bookings</h1>
-                <p class="text-slate-100 text-lg">Manage and monitor all reservations</p>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">All Bookings</h1>
+                <p class="text-gray-600 text-lg">Manage and monitor all reservations</p>
             </div>
             <div class="hidden md:block">
-                <div class="p-4 bg-white bg-opacity-20 rounded-full">
-                    <i class="fas fa-calendar-check text-3xl"></i>
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-calendar-check text-blue-600 text-2xl"></i>
                 </div>
             </div>
         </div>
@@ -21,74 +21,50 @@
 
     <!-- Stats Cards -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
             <div class="flex items-center">
-                <div class="p-3 rounded-full bg-gradient-to-r from-blue-500 to-blue-600">
-                    <i class="fas fa-calendar text-white text-xl"></i>
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-calendar text-blue-600 text-xl"></i>
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Total Bookings</p>
                     <p class="text-2xl font-bold text-gray-900">{{ $bookings->count() }}</p>
                 </div>
             </div>
-            <div class="mt-4">
-                <div class="flex items-center text-sm text-blue-600">
-                    <i class="fas fa-chart-line mr-1"></i>
-                    <span>All reservations</span>
-                </div>
-            </div>
         </div>
         
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
             <div class="flex items-center">
-                <div class="p-3 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-600">
-                    <i class="fas fa-clock text-white text-xl"></i>
+                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-clock text-orange-600 text-xl"></i>
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Pending</p>
                     <p class="text-2xl font-bold text-gray-900">{{ $bookings->where('status', 'pending')->count() }}</p>
                 </div>
             </div>
-            <div class="mt-4">
-                <div class="flex items-center text-sm text-yellow-600">
-                    <i class="fas fa-clock mr-1"></i>
-                    <span>Awaiting approval</span>
-                </div>
-            </div>
         </div>
         
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
             <div class="flex items-center">
-                <div class="p-3 rounded-full bg-gradient-to-r from-green-500 to-green-600">
-                    <i class="fas fa-check text-white text-xl"></i>
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-check text-green-600 text-xl"></i>
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Confirmed</p>
                     <p class="text-2xl font-bold text-gray-900">{{ $bookings->where('status', 'confirmed')->count() }}</p>
                 </div>
             </div>
-            <div class="mt-4">
-                <div class="flex items-center text-sm text-green-600">
-                    <i class="fas fa-check-circle mr-1"></i>
-                    <span>Approved bookings</span>
-                </div>
-            </div>
         </div>
         
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
             <div class="flex items-center">
-                <div class="p-3 rounded-full bg-gradient-to-r from-red-500 to-red-600">
-                    <i class="fas fa-times text-white text-xl"></i>
+                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-times text-red-600 text-xl"></i>
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Cancelled</p>
                     <p class="text-2xl font-bold text-gray-900">{{ $bookings->where('status', 'cancelled')->count() }}</p>
-                </div>
-            </div>
-            <div class="mt-4">
-                <div class="flex items-center text-sm text-red-600">
-                    <i class="fas fa-ban mr-1"></i>
-                    <span>Cancelled bookings</span>
                 </div>
             </div>
         </div>
@@ -130,14 +106,14 @@
     <!-- Bookings Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($bookings as $booking)
-            <div class="bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+            <div class="bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
                 <!-- Booking Header -->
                 <div class="p-6 border-b border-gray-100">
                     <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-200">{{ $booking->title }}</h3>
+                        <h3 class="text-lg font-semibold text-gray-900">{{ $booking->title }}</h3>
                         <span class="px-3 py-1 text-xs font-medium rounded-full 
                             @if($booking->status === 'confirmed') bg-green-100 text-green-800
-                            @elseif($booking->status === 'pending') bg-yellow-100 text-yellow-800
+                            @elseif($booking->status === 'pending') bg-orange-100 text-orange-800
                             @else bg-red-100 text-red-800 @endif">
                             <i class="fas fa-circle mr-1 text-xs"></i>
                             {{ ucfirst($booking->status) }}
@@ -152,8 +128,8 @@
                 <!-- User Info -->
                 <div class="px-6 py-4 bg-gray-50 border-b border-gray-100">
                     <div class="flex items-center">
-                        <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                            <span class="text-white text-sm font-bold">{{ substr($booking->user->name, 0, 1) }}</span>
+                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                            <span class="text-blue-600 text-sm font-bold">{{ substr($booking->user->name, 0, 1) }}</span>
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-gray-900">{{ $booking->user->name }}</p>
@@ -161,7 +137,7 @@
                         </div>
                         <div class="ml-auto">
                             <span class="px-2 py-1 text-xs font-medium rounded-full 
-                                @if($booking->user->isAdmin()) bg-yellow-100 text-yellow-800 @else bg-green-100 text-green-800 @endif">
+                                @if($booking->user->isAdmin()) bg-orange-100 text-orange-800 @else bg-green-100 text-green-800 @endif">
                                 {{ $booking->user->isAdmin() ? 'Admin' : 'User' }}
                             </span>
                         </div>
@@ -206,7 +182,7 @@
                     <!-- Action Buttons -->
                     <div class="flex space-x-2">
                         <a href="{{ route('admin.bookings.show', $booking) }}" 
-                           class="flex-1 text-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-200 group-hover:bg-blue-100">
+                           class="flex-1 text-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-200">
                             <i class="fas fa-eye mr-1"></i> View
                         </a>
                         
@@ -215,7 +191,7 @@
                                 @csrf
                                 @method('PATCH')
                                 <button type="submit" 
-                                        class="w-full px-4 py-2 text-sm font-medium text-green-600 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-200 group-hover:bg-green-100"
+                                        class="w-full px-4 py-2 text-sm font-medium text-green-600 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-200"
                                         onclick="return confirm('Confirm this booking?')">
                                     <i class="fas fa-check mr-1"></i> Confirm
                                 </button>
@@ -225,7 +201,7 @@
                                 @csrf
                                 @method('PATCH')
                                 <button type="submit" 
-                                        class="w-full px-4 py-2 text-sm font-medium text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-colors duration-200 group-hover:bg-red-100"
+                                        class="w-full px-4 py-2 text-sm font-medium text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-colors duration-200"
                                         onclick="return confirm('Cancel this booking?')">
                                     <i class="fas fa-times mr-1"></i> Cancel
                                 </button>
@@ -244,8 +220,8 @@
     <!-- Empty State -->
     @if($bookings->count() === 0)
         <div class="bg-white rounded-xl shadow-lg p-12 text-center border border-gray-100">
-            <div class="mx-auto h-24 w-24 bg-gradient-to-r from-orange-100 to-red-100 rounded-full flex items-center justify-center mb-6">
-                <i class="fas fa-calendar-times text-orange-500 text-3xl"></i>
+            <div class="mx-auto h-24 w-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                <i class="fas fa-calendar-times text-gray-400 text-3xl"></i>
             </div>
             <h3 class="text-xl font-semibold text-gray-900 mb-2">No bookings found</h3>
             <p class="text-gray-600 mb-8 max-w-md mx-auto">There are no bookings in the system yet.</p>

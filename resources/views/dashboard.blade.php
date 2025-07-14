@@ -30,141 +30,98 @@
 
     <!-- Stats Cards -->
     <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div class="flex items-center">
-                <div class="p-3 rounded-full bg-gradient-to-r from-blue-500 to-blue-600">
-                    <i class="fas fa-users text-white text-xl"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm font-medium text-gray-600">Total Users</p>
-                    <p class="text-2xl font-bold text-gray-900">{{ $userCount ?? 0 }}</p>
+        <div class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 flex items-center">
+            <div class="flex-shrink-0">
+                <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                    <i class="fas fa-users text-blue-600 text-2xl"></i>
                 </div>
             </div>
-            <div class="mt-4">
-                <div class="flex items-center text-sm text-blue-600">
-                    <i class="fas fa-user-friends mr-1"></i>
-                    <span>All registered users</span>
-                </div>
+            <div class="ml-4">
+                <p class="text-sm font-medium text-gray-600">Total Users</p>
+                <p class="text-2xl font-bold text-gray-900">{{ $userCount ?? 0 }}</p>
+                <a href="#" class="flex items-center text-blue-600 text-sm mt-1 font-medium"><i class="fas fa-users mr-1"></i>All registered users</a>
             </div>
         </div>
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div class="flex items-center">
-                <div class="p-3 rounded-full bg-gradient-to-r from-slate-500 to-gray-600">
-                    <i class="fas fa-calendar text-white text-xl"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm font-medium text-gray-600">Total Bookings</p>
-                    <p class="text-2xl font-bold text-gray-900">{{ $totalBookings ?? 0 }}</p>
+        <div class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 flex items-center">
+            <div class="flex-shrink-0">
+                <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                    <i class="fas fa-calendar text-blue-600 text-2xl"></i>
                 </div>
             </div>
-            <div class="mt-4">
-                <div class="flex items-center text-sm text-slate-600">
-                    <i class="fas fa-chart-line mr-1"></i>
-                    <span>All time bookings</span>
-                </div>
+            <div class="ml-4">
+                <p class="text-sm font-medium text-gray-600">Total Bookings</p>
+                <p class="text-2xl font-bold text-gray-900">{{ $totalBookings ?? 0 }}</p>
+                <a href="#" class="flex items-center text-blue-600 text-sm mt-1 font-medium"><i class="fas fa-calendar mr-1"></i>All time bookings</a>
             </div>
         </div>
         
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div class="flex items-center">
-                <div class="p-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-600">
-                    <i class="fas fa-clock text-white text-xl"></i>
+        <div class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 flex items-center">
+            <div class="flex-shrink-0">
+                <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
+                    <i class="fas fa-clock text-orange-500 text-2xl"></i>
+                </div>
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Pending</p>
                     <p class="text-2xl font-bold text-gray-900">{{ $pendingBookings ?? 0 }}</p>
-                </div>
-            </div>
-            <div class="mt-4">
-                <div class="flex items-center text-sm text-amber-600">
-                    <i class="fas fa-clock mr-1"></i>
-                    <span>Awaiting confirmation</span>
-                </div>
+                <span class="flex items-center text-orange-500 text-sm mt-1 font-medium"><i class="fas fa-clock mr-1"></i>Awaiting confirmation</span>
             </div>
         </div>
         
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div class="flex items-center">
-                <div class="p-3 rounded-full bg-gradient-to-r from-emerald-500 to-green-600">
-                    <i class="fas fa-check text-white text-xl"></i>
+        <div class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 flex items-center">
+            <div class="flex-shrink-0">
+                <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                    <i class="fas fa-check text-green-600 text-2xl"></i>
+                </div>
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Confirmed</p>
                     <p class="text-2xl font-bold text-gray-900">{{ $confirmedBookings ?? 0 }}</p>
-                </div>
-            </div>
-            <div class="mt-4">
-                <div class="flex items-center text-sm text-emerald-600">
-                    <i class="fas fa-check-circle mr-1"></i>
-                    <span>Successfully booked</span>
-                </div>
+                <span class="flex items-center text-green-600 text-sm mt-1 font-medium"><i class="fas fa-check mr-1"></i>Successfully booked</span>
             </div>
         </div>
         
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div class="flex items-center">
-                <div class="p-3 rounded-full bg-gradient-to-r from-rose-500 to-red-600">
-                    <i class="fas fa-times text-white text-xl"></i>
+        <div class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 flex items-center">
+            <div class="flex-shrink-0">
+                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
+                    <i class="fas fa-times text-red-500 text-2xl"></i>
+                </div>
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Cancelled</p>
                     <p class="text-2xl font-bold text-gray-900">{{ $cancelledBookings ?? 0 }}</p>
-                </div>
-            </div>
-            <div class="mt-4">
-                <div class="flex items-center text-sm text-rose-600">
-                    <i class="fas fa-times-circle mr-1"></i>
-                    <span>Cancelled bookings</span>
-                </div>
+                <span class="flex items-center text-red-500 text-sm mt-1 font-medium"><i class="fas fa-times mr-1"></i>Cancelled bookings</span>
             </div>
         </div>
     </div>
 
     <!-- Quick Actions -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div class="text-center">
-                <div class="w-16 h-16 bg-gradient-to-r from-slate-500 to-gray-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-plus text-white text-2xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">Create New Booking</h3>
-                <p class="text-gray-600 mb-4">Schedule a new reservation for your needs</p>
-                <a href="{{ route('bookings.create') }}" 
-                   class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-slate-600 to-gray-700 text-white text-sm font-medium rounded-lg hover:from-slate-700 hover:to-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 transition-all duration-200">
-                    <i class="fas fa-plus mr-2"></i>
-                    New Booking
-                </a>
+        <div class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 flex flex-col items-center">
+            <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                <i class="fas fa-plus text-blue-600 text-3xl"></i>
             </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">Create New Booking</h3>
+            <p class="text-gray-500 text-sm mb-4 text-center">Schedule a new reservation for your needs</p>
+            <a href="#" class="px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold text-sm shadow hover:bg-blue-700 transition">+ New Booking</a>
         </div>
         
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div class="text-center">
-                <div class="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-calendar-alt text-white text-2xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">View My Bookings</h3>
-                <p class="text-gray-600 mb-4">Check all your current and past bookings</p>
-                <a href="{{ route('bookings.index') }}" 
-                   class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white text-sm font-medium rounded-lg hover:from-amber-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all duration-200">
-                    <i class="fas fa-eye mr-2"></i>
-                    View Bookings
-                </a>
+        <div class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 flex flex-col items-center">
+            <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                <i class="fas fa-calendar-alt text-blue-600 text-3xl"></i>
             </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">View My Bookings</h3>
+            <p class="text-gray-500 text-sm mb-4 text-center">Check all your current and past bookings</p>
+            <a href="#" class="px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold text-sm shadow hover:bg-blue-700 transition">View Bookings</a>
         </div>
         
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div class="text-center">
-                <div class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-user text-white text-2xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">My Profile</h3>
-                <p class="text-gray-600 mb-4">Update your personal information</p>
-                <a href="{{ route('profile.index') }}" 
-                   class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white text-sm font-medium rounded-lg hover:from-emerald-600 hover:to-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-200">
-                    <i class="fas fa-user-edit mr-2"></i>
-                    Edit Profile
-                </a>
+        <div class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 flex flex-col items-center">
+            <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                <i class="fas fa-user text-blue-600 text-3xl"></i>
             </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">My Profile</h3>
+            <p class="text-gray-500 text-sm mb-4 text-center">Update your personal information</p>
+            <a href="#" class="px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold text-sm shadow hover:bg-blue-700 transition">Edit Profile</a>
         </div>
     </div>
 

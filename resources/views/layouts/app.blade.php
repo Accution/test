@@ -11,13 +11,37 @@
     <style>
         [x-cloak] { display: none !important; }
         .sidebar-gradient {
-            background: linear-gradient(135deg, #374151 0%, #4b5563 50%, #6b7280 100%);
+            background: #181F2A;
+            box-shadow: 2px 0 24px 0 rgba(24,31,42,0.12);
         }
         .sidebar-item {
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(.4,0,.2,1);
+            border-radius: 1rem;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.75rem 1.25rem;
+        }
+        .sidebar-item.active, .sidebar-item[aria-current="page"] {
+            background: linear-gradient(90deg, #6C63FF 0%, #48C6EF 100%);
+            color: #fff !important;
+            box-shadow: 0 2px 8px 0 rgba(76,110,245,0.10);
         }
         .sidebar-item:hover {
-            transform: translateX(8px);
+            background: rgba(108,99,255,0.10);
+            color: #6C63FF !important;
+            transform: translateX(6px) scale(1.03);
+        }
+        .sidebar-icon {
+            background: #232B3E;
+            border-radius: 50%;
+            padding: 0.5rem;
+            margin-right: 1rem;
+            color: #6C63FF;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .notification-pulse {
             animation: pulse 2s infinite;

@@ -5,15 +5,15 @@
 @section('content')
 <div class="max-w-4xl mx-auto space-y-8">
     <!-- Header -->
-    <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white">
+    <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
         <div class="flex items-center justify-between">
             <div>
-                <h1 class="text-3xl font-bold mb-2">Booking Details</h1>
-                <p class="text-blue-100 text-lg">View and manage this reservation as admin</p>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Booking Details</h1>
+                <p class="text-gray-600 text-lg">View and manage this reservation as admin</p>
             </div>
             <div class="hidden md:block">
-                <div class="p-4 bg-white bg-opacity-20 rounded-full">
-                    <i class="fas fa-file-alt text-3xl"></i>
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-file-alt text-blue-600 text-2xl"></i>
                 </div>
             </div>
         </div>
@@ -21,18 +21,18 @@
 
     <!-- Status Banner -->
     <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
-        <div class="p-6 bg-gradient-to-r 
-            @if($booking->status === 'confirmed') from-green-50 to-emerald-50 border-l-4 border-green-500
-            @elseif($booking->status === 'pending') from-yellow-50 to-amber-50 border-l-4 border-yellow-500
-            @else from-red-50 to-pink-50 border-l-4 border-red-500 @endif">
+        <div class="p-6 
+            @if($booking->status === 'confirmed') bg-green-50 border-l-4 border-green-500
+            @elseif($booking->status === 'pending') bg-orange-50 border-l-4 border-orange-500
+            @else bg-red-50 border-l-4 border-red-500 @endif">
             <div class="flex items-center">
-                <div class="p-3 rounded-full 
+                <div class="w-12 h-12 rounded-full flex items-center justify-center
                     @if($booking->status === 'confirmed') bg-green-100
-                    @elseif($booking->status === 'pending') bg-yellow-100
+                    @elseif($booking->status === 'pending') bg-orange-100
                     @else bg-red-100 @endif">
                     <i class="fas 
                         @if($booking->status === 'confirmed') fa-check text-green-600
-                        @elseif($booking->status === 'pending') fa-clock text-yellow-600
+                        @elseif($booking->status === 'pending') fa-clock text-orange-600
                         @else fa-times text-red-600 @endif text-xl"></i>
                 </div>
                 <div class="ml-4">
@@ -40,7 +40,7 @@
                     <p class="text-gray-600">This booking is currently 
                         <span class="font-semibold 
                             @if($booking->status === 'confirmed') text-green-600
-                            @elseif($booking->status === 'pending') text-yellow-600
+                            @elseif($booking->status === 'pending') text-orange-600
                             @else text-red-600 @endif">
                             {{ ucfirst($booking->status) }}
                         </span>
@@ -57,7 +57,9 @@
             <!-- Basic Information -->
             <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
                 <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                    <i class="fas fa-info-circle text-blue-500 mr-3"></i>
+                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-info-circle text-blue-600"></i>
+                    </div>
                     Basic Information
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -86,38 +88,40 @@
             <!-- Date & Time Information -->
             <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
                 <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                    <i class="fas fa-calendar-alt text-purple-500 mr-3"></i>
+                    <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-calendar-alt text-purple-600"></i>
+                    </div>
                     Date & Time Details
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200">
+                    <div class="bg-blue-50 rounded-xl p-6 border border-blue-200">
                         <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                            <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mr-3">
                                 <i class="fas fa-sign-in-alt text-white"></i>
                             </div>
-                            <h4 class="text-lg font-semibold text-blue-900">Check-in</h4>
+                            <h4 class="text-lg font-semibold text-gray-900">Check-in</h4>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-blue-800">
+                            <p class="text-gray-700">
                                 <span class="font-medium">Date:</span> {{ $booking->check_in_date->format('l, F d, Y') }}
                             </p>
-                            <p class="text-blue-800">
+                            <p class="text-gray-700">
                                 <span class="font-medium">Time:</span> {{ $booking->check_in_time }}
                             </p>
                         </div>
                     </div>
-                    <div class="bg-gradient-to-r from-red-50 to-red-100 rounded-xl p-6 border border-red-200">
+                    <div class="bg-red-50 rounded-xl p-6 border border-red-200">
                         <div class="flex items-center mb-3">
-                            <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center mr-3">
+                            <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center mr-3">
                                 <i class="fas fa-sign-out-alt text-white"></i>
                             </div>
-                            <h4 class="text-lg font-semibold text-red-900">Check-out</h4>
+                            <h4 class="text-lg font-semibold text-gray-900">Check-out</h4>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-red-800">
+                            <p class="text-gray-700">
                                 <span class="font-medium">Date:</span> {{ $booking->check_out_date->format('l, F d, Y') }}
                             </p>
-                            <p class="text-red-800">
+                            <p class="text-gray-700">
                                 <span class="font-medium">Time:</span> {{ $booking->check_out_time }}
                             </p>
                         </div>
@@ -130,12 +134,14 @@
             <!-- Admin Quick Actions -->
             <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                    <i class="fas fa-bolt text-yellow-500 mr-2"></i>
+                    <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-2">
+                        <i class="fas fa-bolt text-orange-600 text-sm"></i>
+                    </div>
                     Admin Quick Actions
                 </h3>
                 <div class="space-y-3">
                     <a href="{{ route('admin.bookings.edit', $booking) }}" 
-                       class="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-sm font-medium rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md transform hover:-translate-y-1">
+                       class="w-full flex items-center justify-center px-4 py-3 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-md">
                         <i class="fas fa-edit mr-2"></i>
                         Edit Booking 
                     </a>
@@ -145,7 +151,7 @@
                         @csrf
                         @method('PATCH')
                         <button type="submit" 
-                                class="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white text-sm font-medium rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-md transform hover:-translate-y-1">
+                                class="w-full flex items-center justify-center px-4 py-3 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-all duration-200 shadow-md">
                             <i class="fas fa-times mr-2"></i>
                             Cancel Booking 
                         </button>
@@ -156,7 +162,7 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" 
-                                class="w-full flex items-center justify-center px-4 py-3 bg-red-700 text-white text-sm font-medium rounded-lg hover:bg-red-800 transition-all duration-200 shadow-md transform hover:-translate-y-1">
+                                class="w-full flex items-center justify-center px-4 py-3 bg-red-700 text-white text-sm font-medium rounded-lg hover:bg-red-800 transition-all duration-200 shadow-md">
                             <i class="fas fa-trash mr-2"></i>
                             Delete Booking 
                         </button>
@@ -171,7 +177,9 @@
             <!-- Booking Timeline -->
             <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                    <i class="fas fa-history text-green-500 mr-2"></i>
+                    <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-2">
+                        <i class="fas fa-history text-green-600 text-sm"></i>
+                    </div>
                     Booking Timeline
                 </h3>
                 <div class="space-y-4">
@@ -203,7 +211,9 @@
             <!-- Contact Information -->
             <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                    <i class="fas fa-user text-purple-500 mr-2"></i>
+                    <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-2">
+                        <i class="fas fa-user text-purple-600 text-sm"></i>
+                    </div>
                     Contact Info
                 </h3>
                 <div class="space-y-3">

@@ -8,7 +8,7 @@
 @endphp
 <div class="max-w-7xl mx-auto space-y-8">
     <!-- Header -->
-    <div class="bg-gradient-to-r from-slate-700 to-gray-800 rounded-2xl p-8 text-white">
+    <div class="bg-gradient-to-r from-indigo-500 via-blue-400 to-purple-400 rounded-2xl p-8 text-white shadow-xl">
         <div class="flex items-center justify-between">
             <div>
                 <h1 class="text-3xl font-bold mb-2">
@@ -18,11 +18,11 @@
                         Welcome back, {{ auth()->user()->name ?? 'Admin' }}!
                     @endif
                 </h1>
-                <p class="text-gray-200 text-lg">System overview and management</p>
+                <p class="text-blue-100 text-lg">System overview and management</p>
             </div>
             <div class="hidden md:block">
-                <div class="p-4 bg-white bg-opacity-20 rounded-full">
-                    <i class="fas fa-shield-alt text-3xl"></i>
+                <div class="p-4 bg-white bg-opacity-30 rounded-full shadow-lg">
+                    <i class="fas fa-shield-alt text-indigo-500 text-3xl"></i>
                 </div>
             </div>
         </div>
@@ -30,74 +30,47 @@
 
     <!-- Stats Cards -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="rounded-2xl shadow-xl p-6 bg-gradient-to-br from-blue-100 via-blue-50 to-white border border-blue-200">
             <div class="flex items-center">
-                <div class="p-3 rounded-full bg-gradient-to-r from-slate-500 to-gray-600">
-                    <i class="fas fa-users text-white text-xl"></i>
+                <div class="w-14 h-14 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-full flex items-center justify-center shadow-md">
+                    <i class="fas fa-users text-white text-2xl"></i>
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Total Users</p>
                     <p class="text-2xl font-bold text-gray-900">{{ $totalUsers }}</p>
                 </div>
             </div>
-            <div class="mt-4">
-                <div class="flex items-center text-sm text-slate-600">
-                    <i class="fas fa-user-plus mr-1"></i>
-                    <span>Registered users</span>
-                </div>
-            </div>
         </div>
-        
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="rounded-2xl shadow-xl p-6 bg-gradient-to-br from-purple-100 via-purple-50 to-white border border-purple-200">
             <div class="flex items-center">
-                <div class="p-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-600">
-                    <i class="fas fa-calendar text-white text-xl"></i>
+                <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center shadow-md">
+                    <i class="fas fa-calendar text-white text-2xl"></i>
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Total Bookings</p>
                     <p class="text-2xl font-bold text-gray-900">{{ $totalBookings }}</p>
                 </div>
             </div>
-            <div class="mt-4">
-                <div class="flex items-center text-sm text-amber-600">
-                    <i class="fas fa-chart-line mr-1"></i>
-                    <span>All bookings</span>
-                </div>
-            </div>
         </div>
-        
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="rounded-2xl shadow-xl p-6 bg-gradient-to-br from-orange-100 via-yellow-50 to-white border border-orange-200">
             <div class="flex items-center">
-                <div class="p-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-600">
-                    <i class="fas fa-clock text-white text-xl"></i>
+                <div class="w-14 h-14 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full flex items-center justify-center shadow-md">
+                    <i class="fas fa-clock text-white text-2xl"></i>
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Pending</p>
                     <p class="text-2xl font-bold text-gray-900">{{ $pendingBookings }}</p>
                 </div>
             </div>
-            <div class="mt-4">
-                <div class="flex items-center text-sm text-amber-600">
-                    <i class="fas fa-exclamation-triangle mr-1"></i>
-                    <span>Need attention</span>
-                </div>
-            </div>
         </div>
-        
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="rounded-2xl shadow-xl p-6 bg-gradient-to-br from-green-100 via-emerald-50 to-white border border-green-200">
             <div class="flex items-center">
-                <div class="p-3 rounded-full bg-gradient-to-r from-emerald-500 to-green-600">
-                    <i class="fas fa-check text-white text-xl"></i>
+                <div class="w-14 h-14 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full flex items-center justify-center shadow-md">
+                    <i class="fas fa-check text-white text-2xl"></i>
                 </div>
                 <div class="ml-4">
                     <p class="text-sm font-medium text-gray-600">Confirmed</p>
                     <p class="text-2xl font-bold text-gray-900">{{ $confirmedBookings }}</p>
-                </div>
-            </div>
-            <div class="mt-4">
-                <div class="flex items-center text-sm text-emerald-600">
-                    <i class="fas fa-check-circle mr-1"></i>
-                    <span>Successfully booked</span>
                 </div>
             </div>
         </div>
