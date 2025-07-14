@@ -137,7 +137,7 @@
                     <a href="{{ route('admin.bookings.edit', $booking) }}" 
                        class="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-sm font-medium rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md transform hover:-translate-y-1">
                         <i class="fas fa-edit mr-2"></i>
-                        Edit Booking (Admin)
+                        Edit Booking 
                     </a>
                     @if($booking->status === 'confirmed')
                     <form method="POST" action="{{ route('admin.bookings.cancel', $booking) }}" 
@@ -147,7 +147,7 @@
                         <button type="submit" 
                                 class="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white text-sm font-medium rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-md transform hover:-translate-y-1">
                             <i class="fas fa-times mr-2"></i>
-                            Cancel Booking (Admin)
+                            Cancel Booking 
                         </button>
                     </form>
                     @endif
@@ -158,7 +158,7 @@
                         <button type="submit" 
                                 class="w-full flex items-center justify-center px-4 py-3 bg-red-700 text-white text-sm font-medium rounded-lg hover:bg-red-800 transition-all duration-200 shadow-md transform hover:-translate-y-1">
                             <i class="fas fa-trash mr-2"></i>
-                            Delete Booking (Admin)
+                            Delete Booking 
                         </button>
                     </form>
                     <a href="{{ route('admin.bookings') }}" 
